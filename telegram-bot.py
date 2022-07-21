@@ -8,7 +8,7 @@ class BotHandler:
             self.token = token
             self.api_url = "https://api.telegram.org/bot{}/".format(token)
 
-    #url = "https://api.telegram.org/bot<token>/"
+    # url = "https://api.telegram.org/bot<token>/"
 
     def get_updates(self, offset=0, timeout=30):
         method = 'getUpdates'
@@ -34,9 +34,8 @@ class BotHandler:
         return last_update
 
 
-token = '123456789QWEASDZXC' #Token of your bot
-msgbanner_bot = BotHandler(token) #Your bot's name
-
+token = '123456789QWEASDZXC'  # Token of your bot
+msgbanner_bot = BotHandler(token)  # Your bot's name
 
 
 def main():
@@ -44,14 +43,14 @@ def main():
     print('hi, now launching...')
 
     while True:
-        all_updates=msgbanner_bot.get_updates(new_offset)
+        all_updates = msgbanner_bot.get_updates(new_offset)
 
         if len(all_updates) > 0:
             for current_update in all_updates:
                 print(current_update)
                 first_update_id = current_update['update_id']
                 if 'text' not in current_update['message']:
-                    first_chat_text='New member'
+                    first_chat_text = 'New member'
                 else:
                     first_chat_text = current_update['message']['text']
                 first_chat_id = current_update['message']['chat']['id']
